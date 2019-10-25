@@ -10,14 +10,28 @@ var dates = [
   }
 ]
 
-var present_date = new Date(); 
 
 var filteredDates = dates.filter(chatIsOnline)
 
 function chatIsOnline(operator) {
-  return operator.tsCriacao == operator.tsCriacao
+  var horarioAgora = new Date()
+  var horarioInicio = new Date(operator.inicio);
+  var horarioFinal = new Date(operator.fim);
+  
+  horarioAgora = horarioAgora.getUTCHours();
+  horarioInicio = horarioInicio.getUTCHours();
+  horarioFinal = horarioFinal.getUTCHours();
+
+  // var inicio = new Date(operator.inicio);
+  // var fim = new Date(operator.fim);
+  console.log(horarioAgora);
+  console.log("------------")
+  console.log(horarioInicio);
+  console.warn(horarioFinal);
+  // console.warn(new Date(operator.inicio))
+  // return operator.tsCriacao == operator.tsCriacao
 }
 
 
-
-console.log(JSON.stringify(filteredDates))
+// console.log(filteredDates);
+// console.log(JSON.stringify(filteredDates))
