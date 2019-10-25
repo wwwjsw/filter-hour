@@ -14,24 +14,21 @@ var dates = [
 var filteredDates = dates.filter(chatIsOnline)
 
 function chatIsOnline(operator) {
-  var horarioAgora = new Date()
+  var horarioAgora = new Date(Date.now())
   var horarioInicio = new Date(operator.inicio);
   var horarioFinal = new Date(operator.fim);
   
-  horarioAgora = horarioAgora.getUTCHours();
+  horarioAgora = horarioAgora.getHours();
   horarioInicio = horarioInicio.getUTCHours();
   horarioFinal = horarioFinal.getUTCHours();
 
-  // var inicio = new Date(operator.inicio);
-  // var fim = new Date(operator.fim);
-  console.log(horarioAgora);
-  console.log("------------")
-  console.log(horarioInicio);
-  console.warn(horarioFinal);
-  // console.warn(new Date(operator.inicio))
-  // return operator.tsCriacao == operator.tsCriacao
+  if (horarioAgora >= horarioInicio && horarioAgora <= horarioFinal) {
+    console.log('dentro do horario de funcionamento')
+  } else {
+    console.error('fora do horario de funcionamento')
+  }
+  return operator
 }
 
-
-// console.log(filteredDates);
+console.log(filteredDates);
 // console.log(JSON.stringify(filteredDates))
